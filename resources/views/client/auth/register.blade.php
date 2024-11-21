@@ -35,7 +35,7 @@
                     <div id="login">
                         <div class="text-center"><span>Nếu chưa có tài khoản vui lòng đăng ký tại đây</span></div>
                         <div class="social-login text-center margin-bottom-10 margin-top-15">
-                            @if ($errors->any())
+                            {{-- @if ($errors->any())
                                 <div class="alert alert-danger mt-3">
                                     <ul>
                                         @foreach ($errors->all() as $error)
@@ -43,7 +43,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                            @endif
+                            @endif --}}
                             {{-- <script>
                                 function loginFacebook() {
                                     var a = {
@@ -118,39 +118,54 @@
                                                 <fieldset class="form-group">
                                                     <label>Họ<span class="required">*</span></label>
                                                     <input type="text" class="form-control form-control-lg"
-                                                        name="lastName" id="lastName" required
+                                                        name="lastName" id="lastName" 
                                                         data-validation-error-msg="Không được để trống"
                                                         data-validation="required">
+                                                        @error('lastName')
+                                                            <span style="color: red;">{{ $message }}</span>
+                                                        @enderror
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-12">
                                                 <fieldset class="form-group">
                                                     <label>Tên<span class="required">*</span></label>
                                                     <input type="text" class="form-control form-control-lg"
-                                                        name="firstName" id="firstName" required
+                                                        name="firstName" id="firstName" 
                                                         data-validation-error-msg="Không được để trống"
                                                         data-validation="required">
+                                                        @error('firstName')
+                                                            <span style="color: red;">{{ $message }}</span>
+                                                        @enderror
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-12">
                                                 <fieldset class="form-group">
                                                     <label>Email<span class="required">*</span></label>
                                                     <input type="email" class="form-control form-control-lg"
-                                                        name="email" id="email" required>
+                                                        name="email" id="email" >
+                                                        @error('email')
+                                                            <span style="color: red;">{{ $message }}</span>
+                                                        @enderror
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-12">
                                                 <fieldset class="form-group">
                                                     <label>Mật khẩu<span class="required">*</span></label>
                                                     <input type="password" class="form-control form-control-lg"
-                                                        name="password" id="password" required>
+                                                        name="password" id="password" >
+                                                        @error('password')
+                                                            <span style="color: red;">{{ $message }}</span>
+                                                        @enderror
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-12">
                                                 <fieldset class="form-group">
                                                     <label>Xác nhận mật khẩu<span class="required">*</span></label>
                                                     <input type="password" class="form-control form-control-lg"
-                                                        name="password_confirmation" id="password_confirmation" required>
+                                                        name="password_confirmation" id="password_confirmation" >
+                                                        @error('password_confirmation')
+                                                            <span style="color: red;">{{ $message }}</span>
+                                                        @enderror
                                                 </fieldset>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Đăng ký</button>

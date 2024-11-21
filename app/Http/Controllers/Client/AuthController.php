@@ -23,6 +23,13 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
+        ], [
+            
+            'email.required' => 'Email là bắt buộc.',
+            'email.email' => 'Email phải có định dạng hợp lệ.',
+            
+            'password.required' => 'Mật khẩu là bắt buộc.',
+            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
         ]);
 
         $credentials = $request->only('email', 'password');
@@ -54,6 +61,22 @@ class AuthController extends Controller
             'firstName' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
+        ], [
+            'lastName.required' => 'Họ là bắt buộc.',
+            'lastName.string' => 'Họ phải là chuỗi ký tự.',
+            'lastName.max' => 'Họ không được vượt quá 50 ký tự.',
+            
+            'firstName.required' => 'Tên là bắt buộc.',
+            'firstName.string' => 'Tên phải là chuỗi ký tự.',
+            'firstName.max' => 'Tên không được vượt quá 50 ký tự.',
+            
+            'email.required' => 'Email là bắt buộc.',
+            'email.email' => 'Email phải có định dạng hợp lệ.',
+            'email.unique' => 'Email này đã được đăng ký.',
+            
+            'password.required' => 'Mật khẩu là bắt buộc.',
+            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
+            'password.confirmed' => 'Mật khẩu xác nhận không khớp.',
         ]);
         $name = $request->lastName . ' ' . $request->firstName;
         $user = User::create([
